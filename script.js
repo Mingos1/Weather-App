@@ -8,7 +8,6 @@ let place = () => {
 
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${place()}&appid=${api_key}`;
 
-
 async function getData() {
     console.log('calling...')
 
