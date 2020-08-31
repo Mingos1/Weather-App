@@ -15,19 +15,23 @@
 
     <div class="" id="container">
         <header>
-            <h2 id="city-name">City NAme</h2>
-            <p>Current weather</p>
+            <form onsubmit="setTimeout(function(){window.location.reload();},10);" method="post" name="form" id='form-app'>
+                <label for="city-search">City Search</label>
+                <input type="text" name='city-search' id='city-search'>
+                <button type="submit" name="submit" onclick="place()">send</button>
+            </form>
+        </header>
+        <article>
+            <h2 id="city-name"></h2>
+            <p id='weather-condition'></p>
 
             <p id="temperature"></p>
-            <p id="feels-like-temp">Feels Like temperature</p>
-            <p>humidity</p>
+            <p id="feels-like-temp"></p>
+            <p id='humidity'></p>
 
             <p id="min-temp"></p>
             <p id="max-temp"></p>
 
-            
-        </header>
-        <article>
             <p id="sunrise-time"></p>
             <p id="sunset-time"></p>
 

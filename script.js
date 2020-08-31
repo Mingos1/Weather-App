@@ -1,6 +1,13 @@
 const api_key = "90a2160e298f430b373827c5c8f9aaa2";
-let place = 'san diego';
-const url = `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${api_key}`;
+
+let place = () => {
+    let citySearch = document.getElementById('city-search').value;
+    console.log(citySearch);
+    return citySearch;
+}
+
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${place()}&appid=${api_key}`;
+
 
 async function getData() {
     console.log('calling...')
@@ -11,6 +18,18 @@ async function getData() {
     if (response.status !== 200) console.log(`looks like there was a problem. Status Code: ${response.status}`)
     
     console.log(obj);
+
+    let cityIdent = () => {
+        const cityName = JSON.stringify(obj.name);
+        // const timezone = JSON.stringify(obj.timezone);
+        document.getElementById('city-name').textContent = `${cityName}`;
+    }
+
+    let currentWeather = () => {
+        const weatherCond = JSON.stringify(obj.weather[0].main); // icon
+
+        document.getElementById('weather-condition').textContent = `${weatherCond}`;
+    }
 
     let tempReading = () => {
         const currentTemp = JSON.stringify(obj.main.temp);
@@ -27,10 +46,11 @@ async function getData() {
             return Math.ceil(temp - 273.15);
         }
 
-        document.getElementById('temperature').textContent = JSON.stringify(`Current Temperature: ${kelToFaren(currentTemp)} F`);
-        document.getElementById('feels-like-temp').textContent = JSON.stringify(`Feels Like: ${kelToFaren(feelsLikeTemp)} F`);
+        document.getElementById('temperature').textContent = `Current Temperature: ${kelToFaren(currentTemp)} F`;
+        document.getElementById('feels-like-temp').textContent = `Feels Like: ${kelToFaren(feelsLikeTemp)} F`;
         document.getElementById('min-temp').textContent = `Minimum Temperature: ${kelToFaren(minTemp)} F`;
         document.getElementById('max-temp').textContent = `Maximum Temperature: ${kelToFaren(maxTemp)} F`;
+        document.getElementById('max-temp').textContent = `Current Humidity: ${humidity} %`;
     }
 
     let sunTimes = () => {
@@ -38,18 +58,43 @@ async function getData() {
         const sunset = JSON.stringify(obj.sys.sunset);
 
         let unixConvert = (unixTimestamp) => {
-            return new Date(unixTimestamp * 1000); 
-        }
+            const dateObj= new Date(unixTimestamp * 1000); 
 
+            let hours = dateObj.getUTCHours();
+            let minutes = dateObj.getUTCMinutes();
+
+            let session = 'AM';
+
+            if (hours == 0) {
+                hours = 12;
+            }
+
+            if (hours > 12) {
+                hours = hours - 12;
+                session = "PM";
+            }
+
+            return `${hours}:${minutes} ${session}`;
+        }
+        
+        // Displaying odd minute numbers and only EST time
         document.getElementById('sunrise-time').textContent = `Sunrise: ${unixConvert(sunrise)}`;
         document.getElementById('sunset-time').textContent = `Sunset: ${unixConvert(sunset)}`;
     }
-
+    
+    cityIdent();
+    currentWeather();
     tempReading();
     sunTimes();
 }
 
-getData();
+const input = document.getElementById('city-search');
+
+if (!input.value) {
+    input.value = '';
+} else {
+    getData();
+}
 
 
 
@@ -60,10 +105,10 @@ getData();
             // User can enter a city and see temperature for it
             // Can see current weather, current temperature, feels
             // like, humidity, maximum temperature, minimum temperature
-            // sunrise and sunset times
+            // sunrise and sunset tim***
             // Has icons for current weather
             // background color changes for different times of day
-            // can toggle the temperature unit (Celsius ot Ferenheit)
+            // can toggle the temperature unit (Celsius ot Farenheit)
             // Can view weather in their current location
 
             // Below Snippet modified from Google fetch Doc
