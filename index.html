@@ -15,13 +15,19 @@
         <section class='SECTION-APP'>
             <header class="HEADER-APP" id="form--block">
                 <form onsubmit="setTimeout(function(){window.location.reload();},10);" method="post" name="form"
-                    id='form-app'>
+                    id='form'>
                     <label for="city-search"></label>
-                    <input type="text" name='city-search' id='city-search' placeholder="Search City" > 
-                    <button type="submit" name="submit" onclick="place()">send</button>
+                    <input type="text" name='city-search' id='city-search' placeholder="Search City">
+                    <button type="submit" name="submit" id='send' onclick="place()"><i
+                            class="fas fa-search"></i></button>
                 </form>
             </header>
             <article class="ARTICLE-APP" id="main-app--block">
+                <section class="SECTION-APP-MISC" id="current-time--block">
+                    <h3 id='current-month-day'></h3>
+                    <h3 id='current-time'></h3>
+                </section>
+
                 <section class="SECTION-APP-MISC" id="weather-condition--block">
                     <h3 id='weather-condition'></h3>
                 </section>
@@ -40,13 +46,27 @@
                 </section>
 
                 <section class="SECTION-APP-MISC" id="humid-feel--block">
+                    <section class="SECTION-APP--ELEMENT">
+                        <label for="feels-like-temp" class='label--element'>Feels like</label>
                     <p id="feels-like-temp"></p>
-                    <p id='humidity'></p>
+                    </section>
+
+                    <section class="SECTION-APP--ELEMENT">
+                        <label for="humidity" class='label--element'>Humidity</label>
+                        <p  id='humidity'></p>
+                    </section>
                 </section>
 
                 <section class="SECTION-APP-MISC" id="sun-time--block">
-                    <p id="sunrise-time"></p>
-                    <p id="sunset-time"></p>
+                    <section class="SECTION-APP--ELEMENT">
+                        <label for="sunrise-time" class='label--element'>Sunrise Time</label>
+                        <p class='data--element' id="sunrise-time"></p>
+                    </section>
+
+                    <section class="SECTION-APP--ELEMENT">
+                        <label for="sunset-time" class='label--element'>Sunset Time</label>
+                        <p class='data--element' id="sunset-time"></p>
+                    </section>
                 </section>
 
             </article>

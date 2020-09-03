@@ -18,15 +18,39 @@ async function getData() {
     
     console.log(obj);
 
+
+    let currentTime = () => {
+        const newTime = new Date();
+
+        let month = newTime.toLocaleString('default', { month: 'long' });
+        let day = newTime.getDay();
+        let hours = newTime.getHours();
+        let minutes = newTime.getMinutes();
+        let session = 'AM';
+
+        if (hours == 0) hours = 12;
+        if (hours > 12) { hours = hours - 12; session = "PM";}
+        if (minutes < 10) minutes = '0' + minutes;
+        if (day < 10) day = '0' + day;
+        
+        document.getElementById('current-month-day').textContent = (`${month} ${day} | ${hours}:${minutes} ${session} `);
+        document.getElementById('current-time').textContent = (``);
+    }
+
     let cityIdent = () => {
-        const cityName = JSON.stringify(obj.name);
-        const country = JSON.stringify(obj.sys.country);
+        let cityName = JSON.stringify(obj.name);
+        let country = JSON.stringify(obj.sys.country);
         // const timezone = JSON.stringify(obj.timezone);
+        country = country.replace(/['"]+/g, '');
+        cityName = cityName.replace(/['"]+/g, '');
+
         document.getElementById('city-name').textContent = `${cityName}, ${country}`;
     }
 
     let currentWeather = () => {
         let weatherCond = JSON.stringify(obj.weather[0].main); // icon
+
+        weatherCond = weatherCond.replace(/['"]+/g, '');
         
         document.getElementById('weather-condition').textContent = `${weatherCond}`;
     }
@@ -47,10 +71,10 @@ async function getData() {
         }
 
         document.getElementById('temperature').textContent = `${kelToFaren(currentTemp)}°`;
-        document.getElementById('feels-like-temp').textContent = `Feels Like: ${kelToFaren(feelsLikeTemp)}°`;
+        document.getElementById('feels-like-temp').textContent = `${kelToFaren(feelsLikeTemp)}°`;
         document.getElementById('min-temp').textContent = `L: ${kelToFaren(minTemp)}°`;
         document.getElementById('max-temp').textContent = `H: ${kelToFaren(maxTemp)}°`;
-        document.getElementById('humidity').textContent = `Current Humidity: ${humidity} %`;
+        document.getElementById('humidity').textContent = `${humidity} %`;
     }
 
     let sunTimes = () => {
@@ -59,8 +83,6 @@ async function getData() {
 
         let unixConvert = (unixTimestamp) => {
             const dateObj = new Date(unixTimestamp * 1000); 
-
-            console.log(dateObj);
 
             let hours = dateObj.getHours();
 
@@ -77,10 +99,11 @@ async function getData() {
         }
         
         // Displaying odd minute numbers and only EST time
-        document.getElementById('sunrise-time').textContent = `Sunrise: ${unixConvert(sunrise)}`;
-        document.getElementById('sunset-time').textContent = `Sunset: ${unixConvert(sunset)}`;
+        document.getElementById('sunrise-time').textContent = `${unixConvert(sunrise)}`;
+        document.getElementById('sunset-time').textContent = `${unixConvert(sunset)}`;
     }
     
+    currentTime();
     cityIdent();
     currentWeather();
     tempReading();
