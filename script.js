@@ -20,13 +20,14 @@ async function getData() {
 
     let cityIdent = () => {
         const cityName = JSON.stringify(obj.name);
+        const country = JSON.stringify(obj.sys.country);
         // const timezone = JSON.stringify(obj.timezone);
-        document.getElementById('city-name').textContent = `${cityName}`;
+        document.getElementById('city-name').textContent = `${cityName}, ${country}`;
     }
 
     let currentWeather = () => {
-        const weatherCond = JSON.stringify(obj.weather[0].main); // icon
-
+        let weatherCond = JSON.stringify(obj.weather[0].main); // icon
+        
         document.getElementById('weather-condition').textContent = `${weatherCond}`;
     }
 
@@ -45,11 +46,11 @@ async function getData() {
             return Math.ceil(temp - 273.15);
         }
 
-        document.getElementById('temperature').textContent = `Current Temperature: ${kelToFaren(currentTemp)} F`;
-        document.getElementById('feels-like-temp').textContent = `Feels Like: ${kelToFaren(feelsLikeTemp)} F`;
-        document.getElementById('min-temp').textContent = `Minimum Temperature: ${kelToFaren(minTemp)} F`;
-        document.getElementById('max-temp').textContent = `Maximum Temperature: ${kelToFaren(maxTemp)} F`;
-        document.getElementById('max-temp').textContent = `Current Humidity: ${humidity} %`;
+        document.getElementById('temperature').textContent = `${kelToFaren(currentTemp)}°`;
+        document.getElementById('feels-like-temp').textContent = `Feels Like: ${kelToFaren(feelsLikeTemp)}°`;
+        document.getElementById('min-temp').textContent = `L: ${kelToFaren(minTemp)}°`;
+        document.getElementById('max-temp').textContent = `H: ${kelToFaren(maxTemp)}°`;
+        document.getElementById('humidity').textContent = `Current Humidity: ${humidity} %`;
     }
 
     let sunTimes = () => {
@@ -57,21 +58,20 @@ async function getData() {
         const sunset = JSON.stringify(obj.sys.sunset);
 
         let unixConvert = (unixTimestamp) => {
-            const dateObj= new Date(unixTimestamp * 1000); 
+            const dateObj = new Date(unixTimestamp * 1000); 
 
-            let hours = dateObj.getUTCHours();
-            let minutes = dateObj.getUTCMinutes();
+            console.log(dateObj);
+
+            let hours = dateObj.getHours();
+
+            let minutes = dateObj.getMinutes();
 
             let session = 'AM';
 
-            if (hours == 0) {
-                hours = 12;
-            }
-
-            if (hours > 12) {
-                hours = hours - 12;
-                session = "PM";
-            }
+            // Time formatting for JS
+            if (hours == 0) hours = 12;
+            if (hours > 12) hours = hours - 12; session = "PM";
+            if (minutes < 10) minutes = '0' + minutes;
 
             return `${hours}:${minutes} ${session}`;
         }

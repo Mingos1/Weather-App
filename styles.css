@@ -1,31 +1,86 @@
-body {
+* {
+    padding: 0;
     margin: 0;
-    height: 100%;
-    display: grid;
-    grid-template: 1fr 1fr 1fr / minmax(200px, auto);
-    
-
-    background-color: aqua;
-
-
+    font-size: 100%;
+    line-height: 1;
 }
 
-.container-app {
-    display: flex;
-    flex-direction: column;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #072761;
+}
 
-    background-color: red;
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: minmax(300px, auto);
+
+    background-color: hotpink;
+}
+
+.SECTION-APP {
+    grid-column: 2/3;
+    grid-row: 1;
+
+    background-color: white;
+    line-height: 1.5px;
+
+    border: 1px solid black;
+    border-radius: .5em;
 
     padding: 20px;
+    margin: 20px;
+
+    width: 100%;
+    max-width: 400px;
+
+    display: flex;
+    flex-flow: column;
+}
+
+.HEADER-APP,
+.ARTICLE-APP {
+    
+
+    padding: 20px;
+    margin: 10px;
+
+    border: 3px solid black;
+}
+
+.ARTICLE-APP {
+    display: flex;
+    justify-items: center;
+    flex-flow: column;
+
+
+}
+
+#weather-condition--block,
+#temperature--block,
+#city-name--block,
+#min-max-temp--block,
+#humid-feel--block,
+#sun-time--block {
+
+    padding: .5em;
+    display: flex;
+    justify-content: center;
+
+    /*border: 3px solid black;*/
 }
 
 
-header,
-article {
-    
+#temperature {
+    font-size: 3em;
+}
 
-    margin: 20px;
-    padding: 10px;
+#city-name{
+    color: dimgrey;
+}
 
-    background-color: yellow;
+#min-temp,
+#max-temp {
+    margin: 6px;
+    padding: 2px;
 }

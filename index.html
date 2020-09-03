@@ -16,21 +16,22 @@
             <header class="HEADER-APP" id="form--block">
                 <form onsubmit="setTimeout(function(){window.location.reload();},10);" method="post" name="form"
                     id='form-app'>
-                    <label for="city-search">City Search</label>
-                    <input type="text" name='city-search' id='city-search'>
+                    <label for="city-search"></label>
+                    <input type="text" name='city-search' id='city-search' placeholder="Search City" > 
                     <button type="submit" name="submit" onclick="place()">send</button>
                 </form>
             </header>
             <article class="ARTICLE-APP" id="main-app--block">
-                <section class="SECTION-APP-CITY-NAME" id="city-name--block">
-                    <h2 id="city-name"></h2>
+                <section class="SECTION-APP-MISC" id="weather-condition--block">
+                    <h3 id='weather-condition'></h3>
                 </section>
+
                 <section class="SECTION-APP-TEMP" id="temperature--block">
                     <h1 id="temperature"></h1>
                 </section>
 
-                <section class="SECTION-APP-MISC" id="weather-condition--block">
-                    <h3 id='weather-condition'></h3>
+                <section class="SECTION-APP-CITY-NAME" id="city-name--block">
+                    <h2 id="city-name"></h2>
                 </section>
 
                 <section class="SECTION-APP-MISC" id="min-max-temp--block">
