@@ -6,34 +6,50 @@
     <title>baby weather app</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="#">
 </head>
 
 <body>
-    <div class="" id="container">
-        <header>
-            <form onsubmit="setTimeout(function(){window.location.reload();},10);" method="post" name="form" id='form-app'>
-                <label for="city-search">City Search</label>
-                <input type="text" name='city-search' id='city-search'>
-                <button type="submit" name="submit" onclick="place()">send</button>
-            </form>
-        </header>
-        <article>
-            <h2 id="city-name"></h2>
-            <p id='weather-condition'></p>
+    <div class="container">
+        <section class='SECTION-APP'>
+            <header class="HEADER-APP" id="form--block">
+                <form onsubmit="setTimeout(function(){window.location.reload();},10);" method="post" name="form"
+                    id='form-app'>
+                    <label for="city-search">City Search</label>
+                    <input type="text" name='city-search' id='city-search'>
+                    <button type="submit" name="submit" onclick="place()">send</button>
+                </form>
+            </header>
+            <article class="ARTICLE-APP" id="main-app--block">
+                <section class="SECTION-APP-CITY-NAME" id="city-name--block">
+                    <h2 id="city-name"></h2>
+                </section>
+                <section class="SECTION-APP-TEMP" id="temperature--block">
+                    <h1 id="temperature"></h1>
+                </section>
 
-            <p id="temperature"></p>
-            <p id="feels-like-temp"></p>
-            <p id='humidity'></p>
+                <section class="SECTION-APP-MISC" id="weather-condition--block">
+                    <h3 id='weather-condition'></h3>
+                </section>
 
-            <p id="min-temp"></p>
-            <p id="max-temp"></p>
+                <section class="SECTION-APP-MISC" id="min-max-temp--block">
+                    <p id="min-temp"></p>
+                    <p id="max-temp"></p>
+                </section>
 
-            <p id="sunrise-time"></p>
-            <p id="sunset-time"></p>
+                <section class="SECTION-APP-MISC" id="humid-feel--block">
+                    <p id="feels-like-temp"></p>
+                    <p id='humidity'></p>
+                </section>
 
-        </article>
+                <section class="SECTION-APP-MISC" id="sun-time--block">
+                    <p id="sunrise-time"></p>
+                    <p id="sunset-time"></p>
+                </section>
+
+            </article>
+        </section>
     </div>
 
     <script type="module" src="script.js" async defer></script>

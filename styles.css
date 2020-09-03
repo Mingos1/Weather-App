@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    height: 100%;
+    display: grid;
+    grid-template: 1fr 1fr 1fr / minmax(200px, auto);
+    
+
+    background-color: aqua;
+
+
+}
+
+.container-app {
+    display: flex;
+    flex-direction: column;
+
+    background-color: red;
+
+    padding: 20px;
+}
+
+
+header,
+article {
+    
+
+    margin: 20px;
+    padding: 10px;
+
+    background-color: yellow;
+}
