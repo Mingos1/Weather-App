@@ -1,0 +1,25 @@
+{
+  "name": "mybulma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist.sass.mystyles.scss",
+  "dependencies": {
+    "bulma": "^0.9.0",
+    "jest": "^26.4.2",
+    "node-sass": "^4.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mingos1/Weather-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mingos1/Weather-App/issues"
+  },
+  "homepage": "https://github.com/Mingos1/Weather-App#readme"
+}
