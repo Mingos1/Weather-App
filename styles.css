@@ -1,126 +1,31 @@
+
+/* variables and import*/
+:root {
+    --main-font-color: #030306;
+}
+
+/* reset */
+
 * {
-    padding: 0;
     margin: 0;
-    font-size: 100%;
-    line-height: 1;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tags*/
+
+body {
+    font-family: sans-serif;
+    line-height: 1.3em;
+    font-size: 1em;
+    color: var(--main-font-color);
 }
 
 
-body { 
-    font-family: Arial, Helvetica, sans-serif;
+/* classes */
 
+/* IDs */
+
+.car {
+    display: block;
 }
-
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: minmax(300px, auto);
-}
-
-.SECTION-APP {
-    grid-column: 2/3;
-    grid-row: 1;
-
-    background-color: #454761;
-    line-height: 1.5px;
-
-
-    border-radius: .5em;
-
-    margin: 20px;
-
-    width: 120%;
-    max-width: 500px;
-
-    display: flex;
-    flex-flow: column;
-}
-
-.HEADER-APP,
-.ARTICLE-APP {
-    padding: 20px;
-}
-
-.ARTICLE-APP {
-    display: flex;
-    justify-items: center;
-    flex-flow: column;
-
-    background-color: #ececec;
-
-    border-radius: 1em 1em 0 0;
-}
-
-.SECTION-APP--ELEMENT {
-    margin: 10px;
-
-}
-
-.label--element {
-    color: rgb(141, 141, 141);
-    font-size: .8em;
-}
-
-.data--element {
-    font-size: 1.4em;
-}
-
-#city-search {
-    border: none;
-    border-right: none;
-    height: 30px;
-    background: none;
-    color: white;
-
-    padding-left: 20px;
-}
-
-#city-search:focus {
-    border: 1px solid black;
-    border-radius: 2em;
-    padding: 4px;
-    height: 30px;
-}
-
-#send {
-    width: 40px;
-    height: 36px;
-
-    background: none;
-    text-align: center;
-    color: #fff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
-}
-  
-
-#weather-condition--block,
-#temperature--block,
-#city-name--block,
-#min-max-temp--block,
-#humid-feel--block,
-#sun-time--block,
-#current-time--block {
-    margin: 2px;
-    display: flex;
-    justify-content: center;
-
-}
-
-
-#temperature {
-    font-size: 3em;
-}
-
-#city-name{
-    color: dimgrey;
-}
-
-
-#current-time--block {
-    font-size: .8em;
-
-    /*border: 3px solid black;*/
-}
-
