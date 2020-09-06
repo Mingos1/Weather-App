@@ -5,6 +5,75 @@
   to {
     transform: rotate(359deg); } }
 
+/* my code*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.wrapper {
+  padding: 40px;
+  margin: 2px;
+  margin: 0 auto;
+  max-width: 900px;
+
+}
+
+
+.main {
+
+}
+
+.section-main-header {
+
+}
+
+.section-main {
+
+}
+
+.section-card-temp {
+
+}
+
+.section-card-city-name {
+
+}
+
+.section-header {
+
+}
+
+.section-card {
+
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+
+
+
+
+
+/* my code*/
+
 .button, .file {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

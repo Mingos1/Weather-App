@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>baby weather app</title>
+    <title>Weather App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.css">
@@ -11,13 +11,13 @@
 </head>
 
 <body>
+    <div class='wrapper'>
     
-    <header>
+    <header class='header'>
         <header>
             <h1 class="title">
                 Weather Application
             </h1>
-            <p class="subtitle"> Allows you to look up weather</p>
         </header>
         <form onsubmit="setTimeout(function(){window.location.reload();},10);" method="post" name="form" id='form'>
             <label for="city-search"></label>
@@ -26,26 +26,47 @@
         </form>
     </header>
 
-    <main>
-        <p id='current-month-day'></p>
-        <p id='current-time'></p>
-        <p id='weather-condition'></p>
-        <p id="temperature"></p>
-        <p id="city-name"></p>
-        <p id="min-temp"></p>
-        <p id="max-temp"></p>
-        <p id="feels-like-temp"></p>
-        <p id='humidity'></p>
-        <p id="sunrise-time"></p>
-        <p id="sunset-time"></p>
+    <main class='main'>
+        <header class='section-main-header'>
+            <header class="section-header">
+                <h4 id='current-month-day'></h4>
+                <h4 id='current-time'></h4>
+            </header>
+
+            <section class="section-card-temp">
+                <!-- weather condition should be an icon-->
+                <h3 id='weather-condition'></h3>
+                <h2 id="temperature"></h2>
+            </section>
+            <section class="section-card-city-name">
+                <h3 id="city-name"></h3>
+            </header>
+
+            <section class='section-main'>
+                <section class='section-card'>
+                    <h4 id="min-temp"></h4>
+                    <h4 id="max-temp"></h4>
+                </section>
+                <section class="section-card">
+                    <h4 id="feels-like-temp"></h4>
+                </section>
+                <section class="section-card">
+                    <h4 id='humidity'></h4>
+                </section>
+                <section class="section-card">
+                    <h4 id="sunrise-time"></h4>
+                    <h4 id="sunset-time"></h4>
+                </section>
+            </section>
     </main>
 
-    <footer>
+    <footer class='footer'>
 
         <section id="copyright">
             <p>Copyright &copy; 2020 Mingos1</p>
         </section>
     </footer>
+</div>
 
     <script type="module" src="script/script.js" async defer></script>
 </body>
