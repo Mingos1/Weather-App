@@ -14,15 +14,18 @@
     <div class='wrapper'>
     
     <header class='header'>
-        <header>
+        <header class="header-header">
             <h1 class="title">
-                Weather Application
+                Weather Lookup
             </h1>
         </header>
         <form onsubmit="setTimeout(function(){window.location.reload();},10);" method="post" name="form" id='form'>
             <label for="city-search"></label>
-            <input class="input" type="text" name='city-search' id='city-search' placeholder="Search City">
+            <div class='input-wrapper'>
+                <input class="input" type="text" name='city-search' id='city-search' placeholder="Search City">
+                
             <button class="button is-primary" type="submit" name="submit" id='send' onclick="place()">Search</button>
+            </div>
         </form>
     </header>
 
@@ -61,7 +64,6 @@
     </main>
 
     <footer class='footer'>
-
         <section id="copyright">
             <p>Copyright &copy; 2020 Mingos1</p>
         </section>

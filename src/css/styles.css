@@ -7,19 +7,33 @@
 
 /* my code*/
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
 .wrapper {
-  padding: 40px;
-  margin: 2px;
+  padding: 60px 0;
   margin: 0 auto;
   max-width: 900px;
+}
 
+.input-wrapper,
+.header-header {
+  padding: 20px;
+
+}
+
+.input-wrapper{
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  max-width: 500px;
+}
+
+.input-wrapper input {
+  max-width: 450px;
+  margin-right: 20px;
+}
+
+.header-header {
+  text-align: center;
 }
 
 /*
