@@ -12,41 +12,41 @@
 
 <body>
     <div class='wrapper'>
-    
-    <header class='header'>
-        <header class="header-header">
-            <h1 class="title">
-                Weather Lookup
-            </h1>
+
+        <header class='header'>
+            <header class="header-header">
+                <h1 class="title">
+                    Weather Lookup
+                </h1>
+            </header>
+            <form onsubmit="setTimeout(function(){window.location.reload();},10);" method="post" name="form" id='form'>
+                <div class='input-wrapper'>
+                    <label for="city-search"></label>
+                    <input class="input" type="text" name='city-search' id='city-search' placeholder="Search City">
+                    <button class="button is-primary" type="button" name="submit" id='send' >Search</button>
+                </div>
+            </form>
         </header>
-        <form onsubmit="setTimeout(function(){window.location.reload();},10);" method="post" name="form" id='form'>
-            <label for="city-search"></label>
-            <div class='input-wrapper'>
-                <input class="input" type="text" name='city-search' id='city-search' placeholder="Search City">
-                
-            <button class="button is-primary" type="submit" name="submit" id='send' onclick="place()">Search</button>
-            </div>
-        </form>
-    </header>
 
-    <main class='main'>
+        <main class='main'>
 
-        <header class='section-main-header'>
-            <header class="section-header">
-                <h4 id='current-month-day'></h4>
-                <h4 id='current-time'></h4>
+            <header class='section-main-header'>
+                <header class="section-header">
+                    <h4 id='current-month-day'></h4>
+                    <h4 id='current-time'></h4>
+                </header>
+
+                <section class="section-main-temp">
+                    <!-- weather condition should be an icon-->
+                    <h3 id='weather-condition'></h3>
+                    <h2 id="temperature"></h2>
+                </section>
+                <section class="section-main-city-name">
+                    <h3 id="city-name"></h3>
             </header>
 
-            <section class="section-main-temp">
-                <!-- weather condition should be an icon-->
-                <h3 id='weather-condition'></h3>
-                <h2 id="temperature"></h2>
-            </section>
-            <section class="section-main-city-name">
-                <h3 id="city-name"></h3>
-            </header>
-
-            <section class='section-main'>
+            <section class='section-main' id="section-main">
+                <!--
                 <section class='section-card'>
                     <h4 id="min-temp"></h4>
                     <h4 id="max-temp"></h4>
@@ -54,6 +54,7 @@
                 <section class="section-card">
                     <h4 id="feels-like-temp"></h4>
                 </section>
+                -->
                 <section class="section-card">
                     <h4 id='humidity'></h4>
                 </section>
@@ -62,15 +63,15 @@
                     <h4 id="sunset-time"></h4>
                 </section>
             </section>
-    </main>
+        </main>
 
-    <footer class='footer'>
-        <section id="copyright">
-            <p>Copyright &copy; 2020 Mingos1</p>
-        </section>
-    </footer>
-</div>
-
+        <footer class='footer'>
+            <section id="copyright">
+                <p>Copyright &copy; 2020 Mingos1</p>
+            </section>
+        </footer>
+    </div>
+    <script type='text/javascript' src='src/script/config.js'></script>
     <script type="module" src="src/script/script.js" async defer></script>
 </body>
 

@@ -1,10 +1,12 @@
-const api_key = "90a2160e298f430b373827c5c8f9aaa2";
-
+const api_key = config.MY_KEY;
 let place = () => {
     let citySearch = document.getElementById('city-search').value;
-    console.log(citySearch);
+   // console.log(citySearch);
+   // console.log(citySearch);
     return citySearch;
 }
+
+
 
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${place()}&appid=${api_key}`;
 
@@ -15,18 +17,18 @@ async function getData() {
     const obj = await response.json();
     
     if (response.status !== 200) console.log(`looks like there was a problem. Status Code: ${response.status}`)
-    
-    console.log(obj);
 
 
     let currentTime = () => {
         const newTime = new Date();
 
         let month = newTime.toLocaleString('default', { month: 'long' });
-        let day = newTime.getDay();
+        let day = newTime.getUTCDate();
         let hours = newTime.getHours();
         let minutes = newTime.getMinutes();
         let session = 'AM';
+
+        console.log(obj);
 
         if (hours == 0) hours = 12;
         if (hours > 12) { hours = hours - 12; session = "PM";}
@@ -62,19 +64,40 @@ async function getData() {
         const maxTemp = JSON.stringify(obj.main.temp_max);
         const humidity = JSON.stringify(obj.main.humidity);
 
-        let kelToFaren = function(temp) {
-            return Math.ceil((temp - 273.15) * 9/5 + 32);
-        }
+        let tempArray = new Array(currentTemp, feelsLikeTemp,
+                            minTemp, maxTemp);
+
+        let nameArray = new Array('It currently feels like:',
+                                  'Low','High','');
+
+                        
+        const farenNumbers = tempArray.map(function kelToFaren(element) {
+                return Math.ceil((element - 273.15) * 9/5 + 32); 
+            });
+
+        console.log(farenNumbers);
 
         let kelToCel = function(temp) {
             return Math.ceil(temp - 273.15);
         }
 
-        document.getElementById('temperature').textContent = `${kelToFaren(currentTemp)}°`;
+        farenNumbers.forEach(element => {
+            let d1 =  document.getElementById('section-main');
+            console.log(element);
+            d1.insertAdjacentHTML('afterbegin', `<section class='section-card'><h3>${element}</h3>
+            <h4>${element} °</h4>
+        </section>`);
+        });
+        // let di =  document.getElementById('section-main');
+       
+        document.getElementById('temperature').textContent = `${farenNumbers[0]}° F`;
+         /*
         document.getElementById('feels-like-temp').textContent = `${kelToFaren(feelsLikeTemp)}°`;
         document.getElementById('min-temp').textContent = `L: ${kelToFaren(minTemp)}°`;
         document.getElementById('max-temp').textContent = `H: ${kelToFaren(maxTemp)}°`;
         document.getElementById('humidity').textContent = `${humidity} %`;
+        */
+       
     }
 
     let sunTimes = () => {
