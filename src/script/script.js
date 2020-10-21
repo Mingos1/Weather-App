@@ -1,12 +1,11 @@
-const api_key = config.MY_KEY;
+const api_key = '90a2160e298f430b373827c5c8f9aaa2';
+
 let place = () => {
     let citySearch = document.getElementById('city-search').value;
    // console.log(citySearch);
    // console.log(citySearch);
     return citySearch;
 }
-
-
 
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${place()}&appid=${api_key}`;
 
@@ -16,8 +15,11 @@ async function getData() {
     const response = await fetch(url);
     const obj = await response.json();
     
-    if (response.status !== 200) console.log(`looks like there was a problem. Status Code: ${response.status}`)
-
+    if (response.status !== 200) {
+        console.log(`looks like there was a problem. Status Code: ${response.status}`)
+        document.getElementById('temperature').textContent = (`Looks like you got a ${response.status} error.`);
+        
+    } else {
 
     let currentTime = () => {
         const newTime = new Date();
@@ -35,7 +37,7 @@ async function getData() {
         if (minutes < 10) minutes = '0' + minutes;
         if (day < 10) day = '0' + day;
         
-        document.getElementById('current-month-day').textContent = (`${month} ${day} | ${hours}:${minutes} ${session} `);
+        document.getElementById('current-month-day').textContent = (`Fetched at: ${hours}:${minutes} ${session} on ${month} ${day}`);
         document.getElementById('current-time').textContent = (``);
     }
 
@@ -54,7 +56,7 @@ async function getData() {
 
         weatherCond = weatherCond.replace(/['"]+/g, '');
         
-        document.getElementById('weather-condition').textContent = `${weatherCond}`;
+        document.getElementById('weather-condition').textContent = `Current: ${weatherCond}`;
     }
 
     let tempReading = () => {
@@ -63,41 +65,25 @@ async function getData() {
         const minTemp = JSON.stringify(obj.main.temp_min);
         const maxTemp = JSON.stringify(obj.main.temp_max);
         const humidity = JSON.stringify(obj.main.humidity);
+   
 
         let tempArray = new Array(currentTemp, feelsLikeTemp,
                             minTemp, maxTemp);
-
-        let nameArray = new Array('It currently feels like:',
-                                  'Low','High','');
-
                         
         const farenNumbers = tempArray.map(function kelToFaren(element) {
                 return Math.ceil((element - 273.15) * 9/5 + 32); 
             });
 
-        console.log(farenNumbers);
+        // console.log(farenNumbers); Debugging purposes
 
-        let kelToCel = function(temp) {
-            return Math.ceil(temp - 273.15);
-        }
-
-        farenNumbers.forEach(element => {
-            let d1 =  document.getElementById('section-main');
-            console.log(element);
-            d1.insertAdjacentHTML('afterbegin', `<section class='section-card'><h3>${element}</h3>
-            <h4>${element} °</h4>
-        </section>`);
-        });
-        // let di =  document.getElementById('section-main');
        
         document.getElementById('temperature').textContent = `${farenNumbers[0]}° F`;
-         /*
+        /*
         document.getElementById('feels-like-temp').textContent = `${kelToFaren(feelsLikeTemp)}°`;
         document.getElementById('min-temp').textContent = `L: ${kelToFaren(minTemp)}°`;
         document.getElementById('max-temp').textContent = `H: ${kelToFaren(maxTemp)}°`;
-        document.getElementById('humidity').textContent = `${humidity} %`;
-        */
-       
+        document.getElementById('humidity').textContent = `${humidity} %`;   
+        */    
     }
 
     let sunTimes = () => {
@@ -131,6 +117,8 @@ async function getData() {
     currentWeather();
     tempReading();
     sunTimes();
+
+    }
 }
 
 const input = document.getElementById('city-search');
@@ -155,24 +143,3 @@ if (!input.value) {
             // background color changes for different times of day
             // can toggle the temperature unit (Celsius ot Farenheit)
             // Can view weather in their current location
-
-            // Below Snippet modified from Google fetch Doc
-            /*
-            let promise = fetch(url)
-                .then(
-                    function (response) {
-                        if (response.status !== 200) console.log(`looks like there was a problem. Status Code: ${response.status}`)
-                        response.json()
-                        .then(function (data) {
-                            let root = document.getElementById('root');
-                        
-                        });
-                    }
-                )
-
-                .catch(function (
-                    err
-                 ) {
-                    console.log('Fetch Error :-S', err);
-                });
-            */

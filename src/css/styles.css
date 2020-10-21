@@ -89,8 +89,7 @@ body {
 }
 
 .section-main-temp {
-
-  /*border: 2px solid red;*/
+ /* border: 2px solid red;*/
 }
 
 .section-main-temp h2 {
@@ -102,7 +101,14 @@ body {
 }
 
 .section-header {
+  display: flex;
+  flex-direction: column;
+  
   /*border: 2px solid yellow;*/
+}
+
+.section-header h4 {
+  padding: 2px;
 }
 
 .section-card {
